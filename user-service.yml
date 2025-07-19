@@ -61,6 +61,12 @@ management:
       show-details: always
     circuitbreakers:
       enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
 
 logging:
   level:
@@ -68,6 +74,8 @@ logging:
     "[com.example.userService]": DEBUG
     "[io.github.resilience4j.circuitbreaker]": DEBUG
     "[org.springframework.cloud.openfeign]": WARN
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
 
 info:
   app:
