@@ -6,6 +6,8 @@ spring:
     name: product-service
   profiles:
     active: dev
+  config:
+    import: configserver:
   cloud:
     config:
       uri: http://localhost:8888
